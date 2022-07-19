@@ -19,6 +19,8 @@ const startServer = async() =>{
 
 app.use(express.json())
 
+app.use(express.static('./public'))
+
 app.get('/home',(req,res)=>{
     res.send('home page');
 })

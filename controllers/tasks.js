@@ -30,8 +30,16 @@ const getTask = async (req,res)=>{
     }
 }
 
-const updateTask = (req,res)=>{
-    res.send('single task updated')
+const updateTask = async (req,res)=>{
+    try {
+        const Task = await task.findByIdAndUpdate({_id:req.params.id},req.body, {new:true, runValidators:true})
+        if(!Task){
+            return res.status(404).json({msg: `No task with such id ${req.params.id} found`});
+        }
+        res.status(200).json(Task);
+    } catch (error) {
+        res.status(500).json({msg:error});
+    }
 }
 
 const deleteTask = async (req,res)=>{
