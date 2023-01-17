@@ -4,9 +4,6 @@ const tasks = require('./routes/tasks')
 const connectDB =  require('./db/connect')
 require('dotenv').config()
 
-app.get('/',(req,res)=>{
-    res.send('home page')
-})
 
 app.use(express.json())
 
