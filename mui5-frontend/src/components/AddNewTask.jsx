@@ -25,9 +25,12 @@ const AddNewTask = () => {
     <Box
     component='form'
     onSubmit={handleSubmit}
-    sx={{pl:1}}
+    sx={{p:1,mt:4, mb:3}}
+    display='flex'
+    justifyContent='center'
     >
-        <input className='new-task' placeholder='Add new task...' 
+        <input className='new-task' placeholder='Add new task...'
+        style={{width:'50%', border:'2px solid black', padding:'0.5rem'}} 
         value={newTask}
         onChange={(e)=>{setNewTask(e.target.value)}}
         />
