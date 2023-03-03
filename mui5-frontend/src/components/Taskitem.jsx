@@ -1,0 +1,32 @@
+import Paper from '@mui/material/Paper';
+import { Button, ListItem, Typography } from '@mui/material';
+import axios from 'axios';
+
+
+const Taskitem = props => {
+    const {task,getAllTasks} = props
+
+    async function deleteTasks() {
+        try {
+          const deletedTask = await axios.delete(`/api/v1/tasks/${task._id}`)
+          console.log(deletedTask)
+        } catch (error) {
+          console.log(error)
+        }
+        getAllTasks()
+      }
+
+    return (
+        <ListItem sx={{ justifyContent: 'center' }}>
+            <Paper elevation={3} sx={{ width: "800px", padding: '1rem' }}>
+                <Typography variant='h6'>{task.name}</Typography>
+                <Typography variant='h7'>{task._id}</Typography>
+                {task.completed===true && <div>Completed</div>}
+                {task.completed===false && <div>Not completed</div>}
+            <Button onClick={deleteTasks}>Delete</Button>
+            </Paper>
+        </ListItem>
+    )
+}
+
+export default Taskitem

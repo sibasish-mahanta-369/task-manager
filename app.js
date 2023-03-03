@@ -4,6 +4,8 @@ const express = require('express')
 // Create an express application instance
 const app = express()
 
+const cors = require('cors')
+
 // Import the tasks route module
 const tasks = require('./routes/tasks')
 
@@ -13,6 +15,8 @@ const connectDB =  require('./db/connect')
 // Import the dotenv module for accessing environment variables
 require('dotenv').config()
 
+app.use(cors())
+
 // Middleware to parse incoming request data as JSON
 app.use(express.json())
 
@@ -20,7 +24,7 @@ app.use(express.json())
 app.use('/api/v1/tasks',tasks)
 
 // Port to listen on
-const port = 3000
+const port = 5000
 
 // Async function to start the server
 const start = async () => {
